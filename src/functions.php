@@ -89,4 +89,13 @@ function printError($ex)
     </div><?php
 }
 
+/**
+ * @param mixed[] $a Array of values to pick from
+ * @return mixed
+ */
+function random($a)
+{
+    return $a[array_rand($a)];
+}
+
 ?>
