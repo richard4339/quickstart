@@ -3,7 +3,7 @@
  * quickstart
  * @author Richard Lynskey <richard@mozor.net>
  * @copyright Copyright (c) 2016, Richard Lynskey
- * @version 0.1
+ * @version 0.0.2
  *
  * Built 2016-11-05 13:53 CDT by Richard Lynskey
  *
@@ -96,6 +96,46 @@ function printError($ex)
 function random($a)
 {
     return $a[array_rand($a)];
+}
+
+/**
+ * A helper function based on substr[ing] that returns the leftmost $l characters
+ * @param string $s The string
+ * @param integer $l The number of characters to return (defaults to one character)
+ *
+ * @return string
+ */
+function left($s, $l = 1) {
+    if(strlen($s) < 1) {
+        return '';
+    }
+    if(strlen($s) <= $l) {
+        return $s;
+    }
+    if($l < 1) {
+        return $s;
+    }
+    return substr($s, 0, $l);
+}
+
+/**
+ * A helper function based on substr[ing] that returns the rightmost $l characters
+ * @param string $s The string
+ * @param integer $l The number of characters to return (defaults to one character)
+ *
+ * @return string
+ */
+function right($s, $l = 1) {
+    if(strlen($s) < 1) {
+        return '';
+    }
+    if(strlen($s) <= $l) {
+        return $s;
+    }
+    if($l < 1) {
+        return $s;
+    }
+    return substr($s, $l * -1);
 }
 
 ?>
