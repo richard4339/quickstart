@@ -67,6 +67,29 @@ class QuickStartTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(left($s, $l), $s);
     }
+
+    public function testLeftNotAString()
+    {
+        $s = 7;
+
+        $this->assertEquals(left($s), '');
+    }
+
+    public function testLeftNotALength()
+    {
+        $s = "ABC123";
+        $l = 'Q';
+
+        $this->assertEquals(left($s, $l), '');
+    }
+
+    public function testLeftNegativeLength()
+    {
+        $s = "ABC123";
+        $l = -5;
+
+        $this->assertEquals(left($s, $l), 'ABC12');
+    }
     
     //right
     public function testRightNoString()
@@ -115,6 +138,29 @@ class QuickStartTest extends PHPUnit_Framework_TestCase
         $l = 7;
 
         $this->assertEquals(right($s, $l), $s);
+    }
+
+    public function testRightNotAString()
+    {
+        $s = 7;
+
+        $this->assertEquals(right($s), '');
+    }
+
+    public function testRightNotALength()
+    {
+        $s = "ABC123";
+        $l = 'Q';
+
+        $this->assertEquals(right($s, $l), '');
+    }
+
+    public function testRightNegativeLength()
+    {
+        $s = "ABC123";
+        $l = -5;
+
+        $this->assertEquals(right($s, $l), 'BC123');
     }
 
 }

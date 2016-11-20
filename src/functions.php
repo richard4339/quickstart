@@ -3,9 +3,9 @@
  * quickstart
  * @author Richard Lynskey <richard@mozor.net>
  * @copyright Copyright (c) 2016, Richard Lynskey
- * @version 0.0.2
+ * @version 1.0.0
  *
- * Built 2016-11-05 13:53 CDT by Richard Lynskey
+ * Built 2016-11-20 11:40 CST by Richard Lynskey
  *
  */
 
@@ -106,6 +106,14 @@ function random($a)
  * @return string
  */
 function left($s, $l = 1) {
+    if(!is_string($s)) {
+        return '';
+    }
+    if(!is_numeric($l))
+    {
+        return '';
+    }
+    $l = abs($l);
     if(strlen($s) < 1) {
         return '';
     }
@@ -126,6 +134,14 @@ function left($s, $l = 1) {
  * @return string
  */
 function right($s, $l = 1) {
+    if(!is_string($s)) {
+        return '';
+    }
+    if(!is_numeric($l))
+    {
+        return '';
+    }
+    $l = abs($l);
     if(strlen($s) < 1) {
         return '';
     }
