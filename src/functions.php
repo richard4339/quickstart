@@ -113,7 +113,7 @@ function left($s, $l = 1) {
         return $s;
     }
     if($l < 1) {
-        return $s;
+        return '';
     }
     return substr($s, 0, $l);
 }
@@ -133,7 +133,7 @@ function right($s, $l = 1) {
         return $s;
     }
     if($l < 1) {
-        return $s;
+        return '';
     }
     return substr($s, $l * -1);
 }
