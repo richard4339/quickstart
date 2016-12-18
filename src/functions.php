@@ -3,9 +3,9 @@
  * quickstart
  * @author Richard Lynskey <richard@mozor.net>
  * @copyright Copyright (c) 2016, Richard Lynskey
- * @version 1.0.0
+ * @version 1.0.1
  *
- * Built 2016-11-20 11:40 CST by Richard Lynskey
+ * Built 2016-12-18 13:19 CST by Richard Lynskey
  *
  */
 
@@ -152,6 +152,33 @@ function right($s, $l = 1) {
         return '';
     }
     return substr($s, $l * -1);
+}
+
+/**
+ * @param DateTime $date
+ * @return string
+ */
+function intervalFormat(DateTime $date)
+{
+    $interval = $date->diff(new \DateTime('now'));
+
+    $format = array();
+    if(isset($interval->y)) {
+        $format[] = "%y years";
+    }
+    if(isset($interval->m)) {
+        $format[] = "%m months";
+    }
+    if(isset($interval->d)) {
+        $format[] = "%d days";
+    }
+    if(isset($interval->h)) {
+        $format[] = "%h hours";
+    }
+    if(isset($interval->i)) {
+        $format[] = "%i minutes";
+    }
+    return $interval->format(implode(', ', $format) . ' ago');
 }
 
 ?>
