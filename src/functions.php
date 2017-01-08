@@ -41,20 +41,29 @@ function get_gravatar($email, $s = 80, $d = 'mm', $r = 'g', $img = false, $attri
  * @param array $a
  * @param string $class
  * @param string $id
+ * @param bool $return
+ * @return mixed
  */
-function _pr($a, $class = '', $id = '')
+function _pr($a, $class = '', $id = '', $return = false)
 {
     $pclass = '';
     $pid = '';
+    $output = '';
     if ($class != '') {
         $pclass = ' class="' . $class . '"';
     }
     if ($id != '') {
         $pid = ' id="' . $id . '"';
     }
-    print '<pre' . $pclass . $pid . '>';
-    print_r($a);
-    print '</pre>';
+    $output .= '<pre' . $pclass . $pid . '>';
+    $output .= print_r($a, true);
+    $output .= '</pre>';
+
+    if(!$return) {
+        print $output;
+    }
+
+    return $output;
 }
 
 /**
