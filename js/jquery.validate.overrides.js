@@ -21,17 +21,20 @@ $().ready(function () {
         },
         success: function (label, element) {
             // Add the span element, if doesn't exists, and apply the icon classes to it.
-            if (!$(element).next("span")[0]) {
+            if (!$(element).parents(".form-group").children("span")) {
                 $("<span class='glyphicon glyphicon-ok form-control-feedback'></span>").insertAfter($(element));
+            }
+            if ($(element).parents(".form-group").children("em")) {
+                $(element).parents(".form-group").children("em").detach();
             }
         },
         highlight: function (element, errorClass, validClass) {
             $(element).parents(".form-group").addClass("has-error").removeClass("has-success");
-            $(element).next("span").addClass("glyphicon-remove").removeClass("glyphicon-ok");
+            $(element).parents(".form-group").children("span").addClass("glyphicon-remove").removeClass("glyphicon-ok");
         },
         unhighlight: function (element, errorClass, validClass) {
             $(element).parents(".form-group").addClass("has-success").removeClass("has-error");
-            $(element).next("span").addClass("glyphicon-ok").removeClass("glyphicon-remove");
+            $(element).parents(".form-group").children("span").addClass("glyphicon-ok").removeClass("glyphicon-remove");
         }
     });
 
