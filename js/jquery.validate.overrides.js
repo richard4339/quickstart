@@ -1,22 +1,37 @@
-/* Bootstrap compatibility code from https://stackoverflow.com/questions/18754020/bootstrap-3-with-jquery-validation-plugin */
-// override jquery validate plugin defaults
+/* Bootstrap compatibility code from https://github.com/jquery-validation/jquery-validation/blob/b8c97351148c24ac1ee6252178cb40bb6ac2fb2b/demo/bootstrap/index.html */
 $().ready(function () {
 
     $.validator.setDefaults({
-        highlight: function (element, errorClass, validClass) {
-            $(element).closest('.form-group').removeClass('has-error').removeClass('has-success').removeClass('has-feedback').addClass('has-error').addClass("has-feedback").children('.form-control-feedback').detach('form-control-feedback').append('<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>');
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).closest('.form-group').removeClass('has-error').removeClass('has-success').removeClass('has-feedback').children('.form-control-feedback').detach('form-control-feedback');
-        },
-        errorElement: 'span',
-        errorClass: 'help-block',
+        errorElement: "em",
         errorPlacement: function (error, element) {
-            if (element.parent('.input-group').length) {
-                error.insertAfter(element.parent());
+            // Add the `help-block` class to the error element
+            error.addClass("help-block");
+            // Add `has-feedback` class to the parent div.form-group
+            // in order to add icons to inputs
+            element.parents(".form-group").addClass("has-feedback");
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.parent("label"));
             } else {
                 error.insertAfter(element);
             }
+            // Add the span element, if doesn't exists, and apply the icon classes to it.
+            if (!element.next("span")[0]) {
+                $("<span class='glyphicon glyphicon-remove form-control-feedback'></span>").insertAfter(element);
+            }
+        },
+        success: function (label, element) {
+            // Add the span element, if doesn't exists, and apply the icon classes to it.
+            if (!$(element).next("span")[0]) {
+                $("<span class='glyphicon glyphicon-ok form-control-feedback'></span>").insertAfter($(element));
+            }
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).parents(".form-group").addClass("has-error").removeClass("has-success");
+            $(element).next("span").addClass("glyphicon-remove").removeClass("glyphicon-ok");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).parents(".form-group").addClass("has-success").removeClass("has-error");
+            $(element).next("span").addClass("glyphicon-ok").removeClass("glyphicon-remove");
         }
     });
 
