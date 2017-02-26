@@ -41,6 +41,42 @@ function _pr($a, $class = '', $id = '', $return = false)
 }
 
 /**
+ * Print the $_REQUEST global using the print_r() function wrapped in <pre> tags.
+ * Can optionally add a class and ID to the <pre> tag
+ * @param string $class
+ * @param string $id
+ * @param bool $return
+ * @return mixed
+ */
+function printRequest($class = '', $id = '', $return = false) {
+    return _pr($_REQUEST, $class, $id, $return);
+}
+
+/**
+ * Print the $_POST global using the print_r() function wrapped in <pre> tags.
+ * Can optionally add a class and ID to the <pre> tag
+ * @param string $class
+ * @param string $id
+ * @param bool $return
+ * @return mixed
+ */
+function printPost($class = '', $id = '', $return = false) {
+    return _pr($_POST, $class, $id, $return);
+}
+
+/**
+ * Print the $_GET global using the print_r() function wrapped in <pre> tags.
+ * Can optionally add a class and ID to the <pre> tag
+ * @param string $class
+ * @param string $id
+ * @param bool $return
+ * @return mixed
+ */
+function printGet($class = '', $id = '', $return = false) {
+    return _pr($_GET, $class, $id, $return);
+}
+
+/**
  * Print a "pretty" version of a PHP exception in a nice bootstrap alert
  * @param Exception $ex
  */
