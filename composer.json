@@ -19,7 +19,9 @@
   },
   "autoload": {
     "files": [
-      "src/functions.php"
+      "src/functions.php",
+      "src/print.php",
+      "src/string.php"
     ]
   }
 }
