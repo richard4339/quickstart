@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "php": ">=5.6"
+    "php": ">=7.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^5",
@@ -20,6 +20,7 @@
   "autoload": {
     "files": [
       "src/functions.php",
+      "src/numeric.php",
       "src/print.php",
       "src/string.php"
     ]
