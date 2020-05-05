@@ -77,7 +77,7 @@ class StringTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(left($s, $l), 'ABC12');
     }
-    
+
     //right
     public function testRightNoString()
     {
